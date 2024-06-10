@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         GTA Token Clicker by t.me/stiflerhub
-// @version      0.2
+// @version      0.3
 // @description  Automated GTA Token Clicker
 // @author       stiflerproger
 // @match        https://clicgta.com/*
@@ -19,6 +19,7 @@
     menuLeaderboard: "#leaderboard-navigation",
     menuReferrals: "#referrals-navigation",
     energyPercentage: ".battle__footer-energy-percentage",
+    energyPopup: ".energy-popup",
     enemySpine: ".battle__player-container",
     cyclePopup: "#CyclePopup",
   };
@@ -41,7 +42,7 @@
 
     const enemyCoords = getSelectorCoords(Selectors.enemySpine);
 
-    while (energy > 0) {
+    while (!document.querySelector(Selectors.energyPopup)) {
       (await waitForElement(Selectors.enemySpine)).dispatchEvent(
         new MouseEvent("click", {
           bubbles: true,
