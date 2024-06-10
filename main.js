@@ -1,3 +1,17 @@
+// ==UserScript==
+// @name         GTA Token Clicker by t.me/stiflerhub
+// @version      0.2
+// @description  Automated GTA Token Clicker
+// @author       stiflerproger
+// @match        https://clicgta.com/*
+// @supportURL   https://github.com/stiflerproger/gta-monkey
+// @homepageURL  https://github.com/stiflerproger/gta-monkey
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=clicgta.com
+// @grant        none
+// @license MIT
+// @namespace https://greasyfork.org/users/1315776
+// ==/UserScript==
+
 (async function () {
   const Selectors = {
     menuBattle: "#battle-navigation",
