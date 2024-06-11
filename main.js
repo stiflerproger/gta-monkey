@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         GTA Token Clicker by t.me/stiflerhub
-// @version      0.4
+// @version      0.5
 // @description  Automated GTA Token Clicker
 // @author       stiflerproger
 // @match        https://clicgta.com/*
@@ -29,7 +29,8 @@
     allEnemiesKilled: 2,
   };
 
-  await waitForElement(".battle__player-container");
+  await waitForElement(Selectors.menuBattle);
+  await sleep(5000);
 
   const endReason = await fight();
 
