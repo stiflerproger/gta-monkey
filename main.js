@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         GTA Token Clicker by t.me/stiflerhub
-// @version      0.3
+// @version      0.4
 // @description  Automated GTA Token Clicker
 // @author       stiflerproger
 // @match        https://clicgta.com/*
@@ -31,7 +31,9 @@
 
   await waitForElement(".battle__player-container");
 
-  await fight();
+  const endReason = await fight();
+
+  console.log("end reason:", endReason);
 
   async function fight() {
     await goto("battle");
@@ -42,7 +44,10 @@
 
     const enemyCoords = getSelectorCoords(Selectors.enemySpine);
 
-    while (!document.querySelector(Selectors.energyPopup)) {
+    while (
+      !document.querySelector(Selectors.energyPopup) &&
+      !document.querySelector(Selectors.cyclePopup)
+    ) {
       (await waitForElement(Selectors.enemySpine)).dispatchEvent(
         new MouseEvent("click", {
           bubbles: true,
@@ -57,7 +62,13 @@
       energy = await getEnergy();
     }
 
-    if (!energy) return fightEndReasons.noEnergy;
+    if (document.querySelector(Selectors.cyclePopup)) {
+      return fightEndReasons.allEnemiesKilled;
+    }
+
+    if (!energy) {
+      return fightEndReasons.noEnergy;
+    }
 
     return 0;
   }
