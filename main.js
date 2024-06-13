@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         GTA Token Clicker by t.me/stiflerhub
-// @version      0.6
+// @version      0.7
 // @description  Automated GTA Token Clicker
 // @author       stiflerproger
 // @match        https://clicgta.com/*
@@ -26,6 +26,8 @@ EventTarget.prototype.addEventListener = function (type, listener) {
 };
 
 (async function () {
+  addConfigMenu();
+
   const Selectors = {
     menuBattle: "#battle-navigation",
     menuUpgrades: "#upgrades-navigation",
@@ -141,3 +143,28 @@ EventTarget.prototype.addEventListener = function (type, listener) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 })();
+
+function addConfigMenu() {
+  const menuStyle = document.createElement("style");
+  menuStyle.innerHTML = `
+    #botMenu {
+      display: flex;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      padding: 15px;
+      color: white;
+    }
+  `;
+
+  const menuEl = document.createElement("div");
+  menuEl.id = "botMenu";
+  menuEl.innerHTML = `
+    <div class="botTitle">GTA Token Clicker by t.me/stiflerhub</div>
+  `;
+
+  document.body.append(menuStyle);
+  document.body.append(menuEl);
+}
