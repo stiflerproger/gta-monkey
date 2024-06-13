@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         GTA Token Clicker by t.me/stiflerhub
-// @version      0.5
+// @version      0.6
 // @description  Automated GTA Token Clicker
 // @author       stiflerproger
 // @match        https://clicgta.com/*
@@ -8,9 +8,22 @@
 // @homepageURL  https://github.com/stiflerproger/gta-monkey
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=clicgta.com
 // @grant        none
+// @run-at document-start
 // @license MIT
 // @namespace https://greasyfork.org/users/1315776
+// @downloadURL https://update.greasyfork.org/scripts/497541/GTA%20Token%20Clicker%20by%20tmestiflerhub.user.js
+// @updateURL https://update.greasyfork.org/scripts/497541/GTA%20Token%20Clicker%20by%20tmestiflerhub.meta.js
 // ==/UserScript==
+
+// отключаем модалку "Закрыть сайт?"
+EventTarget.prototype.addEventListenerBase =
+  EventTarget.prototype.addEventListener;
+EventTarget.prototype.addEventListener = function (type, listener) {
+  if (type === "beforeunload") {
+    return;
+  }
+  this.addEventListenerBase(type, listener);
+};
 
 (async function () {
   const Selectors = {
@@ -34,7 +47,8 @@
 
   const endReason = await fight();
 
-  console.log("end reason:", endReason);
+  await sleep(5000);
+  window.close();
 
   async function fight() {
     await goto("battle");
