@@ -3,6 +3,7 @@
 // @name:ru      GTA Token Кликер by t.me/stiflerhub
 // @version      0.8
 // @description  Automated GTA Token Clicker
+// @description:ru Скрипт для автоматического боя с бандитами GTA
 // @author       stiflerproger
 // @match        https://clicgta.com/*
 // @supportURL   https://github.com/stiflerproger/gta-monkey
