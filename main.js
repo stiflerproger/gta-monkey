@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         GTA Token Clicker by t.me/stiflerhub
-// @version      0.7
+// @name:ru      GTA Token Кликер by t.me/stiflerhub
+// @version      0.8
 // @description  Automated GTA Token Clicker
 // @author       stiflerproger
 // @match        https://clicgta.com/*
